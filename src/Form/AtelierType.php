@@ -6,6 +6,7 @@ use App\Entity\Atelier;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AtelierType extends AbstractType
 {
@@ -13,7 +14,9 @@ class AtelierType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('description')
+            ->add('description',TextareaType::class, [
+        'label' => 'Description',
+        'attr' => ['class' => 'form-control'] ])
         ;
     }
 

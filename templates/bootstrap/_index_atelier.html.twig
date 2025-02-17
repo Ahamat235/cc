@@ -2,7 +2,7 @@
     <div class="card-body">
         <h5 class="card-title">{{ atelier.nom}}</h5>
         <p class="card-text">
-        {{ atelier.description }}
+        {{ atelier.description|markdown|raw }}
         </p>
         <button onclick="location.href='{{ path('app_atelier_show', {'id': atelier.id}) }}'"
                 title="Show" class="btn btn-primary">show</button>

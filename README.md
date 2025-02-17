@@ -7,4 +7,5 @@ projets universitaire
 -
 -
  **les commandes utilisés**
- 
+- symfony composer require cebe/markdown
+- symfony console make:twig-extension
