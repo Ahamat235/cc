@@ -3,9 +3,17 @@
 {% block title %}New Atelier{% endblock %}
 
 {% block body %}
-    <h1>Create new Atelier</h1>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Create a new Atelier
+                    </div>
+                    {{ include('bootstrap/_form_atelier.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
 
-    {{ include('atelier/_form.html.twig') }}
-
-    <a href="{{ path('app_atelier_index') }}">back to list</a>
 {% endblock %}

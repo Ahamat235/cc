@@ -1,0 +1,14 @@
+<div class="card" >
+    <div class="card-body">
+        <h5 class="card-title">{{ atelier.nom }}</h5>
+        <p class="card-text">
+        {{ atelier.description }}
+        </p>
+        <div class="card-footer bg-transparent border-success">
+            <button onclick="location.href='{{ path('app_atelier_edit', {'id': atelier.id}) }}'"
+                    title="Edit" class="btn btn-primary">edit</button>
+            {{ include('bootstrap/_delete_atelier.html.twig') }}
+
+        </div>
+    </div>
+</div>

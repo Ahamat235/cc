@@ -3,11 +3,15 @@
 {% block title %}Edit Atelier{% endblock %}
 
 {% block body %}
-    <h1>Edit Atelier</h1>
-
-    {{ include('atelier/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_atelier_index') }}">back to list</a>
-
-    {{ include('atelier/_delete_form.html.twig') }}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    Edit
+                </div>
+                {{ include('bootstrap/_form_atelier.html.twig') }}
+            </div>
+        </div>
+    </div>
+    </div>
 {% endblock %}
