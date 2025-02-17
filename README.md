@@ -7,7 +7,6 @@ projets universitaire
 -
 -
  **les commandes utilisés**
-- symfony composer require orm-fixtures --dev
-- symfony console make:fixture
-- symfony composer require fakerphp/faker
-- symfony console doctrine:fixtures:load
+ 
+- symfony console make:crud Atelier
+- symfony server:start --no-tls --listen-ip=0.0.0.0 --d
