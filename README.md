@@ -7,5 +7,8 @@ projets universitaire
 -
 -
  **les commandes utilisés**
-- symfony composer require cebe/markdown
-- symfony console make:twig-extension
+- symfony console make:user
+- symfony console m:mig
+- symfony console d:m:m
+- symfony console make:security:form-login
+- symfony console make:registration-form
