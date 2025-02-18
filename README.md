@@ -7,8 +7,7 @@ projets universitaire
 -
 -
  **les commandes utilisés**
-- symfony console make:user
+- symfony console make:entity 
 - symfony console m:mig
 - symfony console d:m:m
-- symfony console make:security:form-login
-- symfony console make:registration-form
+- symfony console d:f:l
