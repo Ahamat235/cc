@@ -2,10 +2,31 @@
     <!-- Navbar content -->
     <div class="container">
         <a class="navbar-nav mr-auto" href="{{ path('app_atelier_index') }}">
-            <i class="bi-house" style="font-size: 1rem; color: black;"></i>
+            <i class="bi-house" style="font-size: 2rem; color: black;"></i>
         </a>
-        <a class="navbar-nav ml-auto" href="{{ path('app_atelier_new') }}">
-            <i class="bi-plus" style="font-size: 1rem; color: black;"></i>
+        {%  if app.user %}
+        <a class="navbar-brand ml-4" href="{{ path('app_atelier_new') }}">
+            <i class="bi-plus" style="font-size: 2rem; color: black;"></i>
         </a>
+
+        <a class="navbar-nav">Register
+            <a class="navbar-brand" type="button" href="{{ path('app_register') }}">Register</a>
+        </a>
+
+        <a class="navbar-nav">logout
+            <a class="navbar-brand" type="button" href="{{ path('app_logout') }}">logout</a>
+        </a>
+
+    {% else %}
+
+        <a class="navbar-nav">Register
+            <a class="navbar-brand" type="button" href="{{ path('app_register') }}">Register</a>
+        </a>
+        
+        <a class="navbar-nav">login
+            <a class="navbar-brand" type="button" href="{{ path('app_login') }}">login</a>
+        </a>
+
+    {%  endif %}
     </div>
 </nav>

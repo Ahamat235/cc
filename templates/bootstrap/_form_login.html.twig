@@ -1,0 +1,25 @@
+<div class="card-body">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <form action="{{ path('app_login') }}" method="post">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" required autofocus>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="_password" class="form-control" required>
+        </div>
+        <!-- Token CSRF si nécessaire -->
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<div class="card-body">
+    {{ form_start(form) }}
+    <div class="mb-3">
+        {{ form_label(form.username, 'Username', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.prenom, 'Prenom', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.plainPassword, 'Password', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.plainPassword, {'attr': {'class': 'form-control'}}) }}
+
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+    {{ form_end(form) }}
+    {{ form_errors(form) }}
+</div>
