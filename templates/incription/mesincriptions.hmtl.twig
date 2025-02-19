@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes inscriptions index{% endblock %}
+
+{% block body %}
+    <h1>Mes inscriptions index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for inscription in inscriptions %}
+            <tr>
+                <td>{{ inscription.atelier.id }}</td>
+                <td>{{ inscription.atelier.nom }}</td>
+                <td>{{ inscription.atelier.description }}</td>
+                <td>
+                    <a href="{{ path('app_atelier_show', {'id': inscription.atelier.id}) }}">show</a>
+                    <a href="{{ path('app_atelier_edit', {'id': inscription.atelier.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_atelier_index') }}">Tout les ateliers</a>
+{% endblock %}

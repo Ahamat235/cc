@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 use App\Entity\Atelier;
 use App\Entity\Inscription;
+use App\Repository\InscriptionRepository;
 
 final class IncriptionController extends AbstractController
 {
@@ -44,5 +45,26 @@ final class IncriptionController extends AbstractController
 
         return $this->redirectToRoute('app_atelier_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route(path: '/mesinscriptions', name: 'mesinscriptions', methods: ['GET'])]
+    public function mesinscriptions(): Response
+    {
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+        return $this->render('inscription/mesinscriptions.html.twig', [
+            'inscriptions' => $this->getUser()->getInscriptions(),
+        ]);
+    }
+
+    #[Route(path: '/atelier/{id}/inscrits', name: 'inscrits', methods: ['GET'])]
+    public function inscrits(Atelier $atelier): Response
+    {
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+        return $this->render('inscription/inscrits.html.twig', [
+            'inscriptions' => $atelier->getInscriptions(),
+        ]);
+    }
+
 
 }
