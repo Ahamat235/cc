@@ -6,5 +6,23 @@
         </p>
         <button onclick="location.href='{{ path('app_atelier_show', {'id': atelier.id}) }}'"
                 title="Show" class="btn btn-primary">show</button>
+        {% if app.user  %}
+            {% set inscrit = false %}
+            {% for inscription in atelier.inscriptions %}
+                {% if inscription.user.id == app.user.id %}
+                    {% set inscrit = true %}
+                {% endif %}
+            {% endfor %}
+
+            {% if 'ROLE_INSTRUCTEUR' in app.user.roles %}
+                <a class="btn btn-primary" type="button" href="{{ path('inscrits', {id: atelier.id}) }}">les inscrits</a>
+            {% endif %}
+
+            {% if inscrit %}
+                <a href="{{ path('desinscrire', {id: atelier.id}) }}" class="btn btn-danger">Se désinscrire</a>
+            {% else %}
+                <a href="{{ path('inscrire', {id: atelier.id}) }}" class="btn btn-primary">S'inscrire</a>
+            {% endif %}
+        {% endif %}
     </div>
 </div>

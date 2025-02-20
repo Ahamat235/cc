@@ -7,4 +7,4 @@ projets universitaire
 -
 -
  **les commandes utilisés**
-
+- symfony console d:f:l

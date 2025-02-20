@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes inscriptions index{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h1 class="mb-0">Mes inscriptions index</h1>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for inscription in inscriptions %}
+                        <tr>
+                            <th scope="row">{{ inscription.atelier.id }}</th>
+                            <td>{{ inscription.atelier.nom }}</td>
+                            <td>{{ inscription.atelier.description }}</td>
+                            <td>
+                                <a href="{{ path('app_atelier_show', {'id': inscription.atelier.id}) }}" class="btn btn-info btn-sm">Show</a>
+                                <a href="{{ path('app_atelier_edit', {'id': inscription.atelier.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center">No records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

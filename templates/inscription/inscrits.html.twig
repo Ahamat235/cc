@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscrits index{% endblock %}
+
+{% block body %}
+    <div  class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h1 class="mb-0">Inscrits index</h1>
+            </div>
+            <div class="card-body">
+                <table class="table table-success table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for inscription in inscriptions %}
+                        <tr>
+                            <th scope="row">{{ inscription.user.id }}</th>
+                            <td>{{ inscription.user.nom }}</td>
+                            <td>{{ inscription.user.prenom }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

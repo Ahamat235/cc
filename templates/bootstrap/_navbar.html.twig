@@ -5,7 +5,10 @@
             <i class="bi-house" style="font-size: 2rem; color: black;"></i>
         </a>
         {%  if app.user %}
-        <a class="navbar-brand ml-4" href="{{ path('app_atelier_new') }}">
+            {% if 'ROLE_APPRENTI' in app.user.roles %}
+                <a class="navbar-brand mr-2" type="button" href="{{ path('mesinscriptions') }}">Mes inscriptions</a>
+            {% endif %}
+        <a class="navbar-brand ml-8" href="{{ path('app_atelier_new') }}">
             <i class="bi-plus" style="font-size: 2rem; color: black;"></i>
         </a>
 

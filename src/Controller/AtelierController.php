@@ -17,7 +17,7 @@ final class AtelierController extends AbstractController
     #[Route(name: 'app_atelier_index', methods: ['GET'])]
     public function index(AtelierRepository $atelierRepository): Response
     {
-        return $this->render('atelier/inscrits.html.twig', [
+        return $this->render('atelier/index.html.twig', [
             'ateliers' => $atelierRepository->findAll(),
         ]);
     }
