@@ -24,16 +24,28 @@ class AtelierFixture extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         $users =[];
-        for($i=0 ; $i<3 ; $i++){
+        for($i=1 ; $i<4 ; $i++){
+            $user = new User();
+            $user->setUsername('apprenti_'.$i)
+                ->setPassword($this->passwordHasher->hashPassword(
+                    $user,'secret'
+                ))
+                ->setNom('NomApprenti'.$i)
+                ->setPrenom("PrenomApprenti$i")
+                ->setRoles(['ROLE_APPRENTI']);
+            $manager->persist($user);
+            $users[]= $user;
+        }
+
+        for($i=1 ; $i<2 ; $i++){
             $user = new User();
             $user->setUsername('instructeur_'.$i)
                 ->setPassword($this->passwordHasher->hashPassword(
                     $user,'secret'
                 ))
-                ->setNom('Nom'.$i)
-                ->setPrenom("Prenom$i");
+                ->setNom('NomInstructeur'.$i)
+                ->setPrenom("PrenomInstructeur$i")
             $manager->persist($user);
-            $users[]= $user;
         }
 
 
