@@ -44,7 +44,7 @@ class AtelierFixture extends Fixture
                     $user,'secret'
                 ))
                 ->setNom('NomInstructeur'.$i)
-                ->setPrenom("PrenomInstructeur$i")
+                ->setPrenom("PrenomInstructeur$i");
             $manager->persist($user);
         }
 

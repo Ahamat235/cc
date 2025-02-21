@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Instructeur index{% endblock %}
+
+{% block body %}
+    <h1>Instructeur index</h1>
+    
+    <a href="{{ path('admin_newinsctructeur') }}">New instructeur</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Roles</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.roles|join(', ') }}</td>
+                <td>
+					<a href="{{ path('delete_instructeur', {'id': user.id}) }}">Delete</a>
+					
+					{% if "ROLE_ADMIN" not in user.roles %}
+						<a href="{{ path('makeadmin', {'id': user.id}) }}">Make Admin</a>
+					{% else %}
+						<a href="{{ path('unmakeadmin', {'id': user.id}) }}">UnMake Admin</a>
+					{% endif %}
+				</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_atelier_index') }}">Tout les ateliers</a>
+{% endblock %}
