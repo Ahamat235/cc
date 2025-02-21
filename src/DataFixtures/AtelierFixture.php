@@ -38,14 +38,15 @@ class AtelierFixture extends Fixture
         }
 
         $user2 =[];
-        for($i=1 ; $i<2 ; $i++){
+        for($i=1 ; $i<3 ; $i++){
             $user = new User();
             $user->setUsername('instructeur_'.$i)
                 ->setPassword($this->passwordHasher->hashPassword(
                     $user,'secret'
                 ))
                 ->setNom('NomInstructeur'.$i)
-                ->setPrenom("PrenomInstructeur$i");
+                ->setPrenom("PrenomInstructeur$i")
+                ->setRoles(['ROLE_INSTRUCTEUR']);
             $manager->persist($user);
             $user2[]=$user;
         }

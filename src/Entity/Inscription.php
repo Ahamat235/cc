@@ -21,6 +21,9 @@ class Inscription
     #[ORM\JoinColumn(nullable: false)]
     private ?Atelier $atelier = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $note = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,6 +49,18 @@ class Inscription
     public function setAtelier(?Atelier $atelier): static
     {
         $this->atelier = $atelier;
+
+        return $this;
+    }
+
+    public function getNote(): ?int
+    {
+        return $this->note;
+    }
+
+    public function setNote(?int $note): static
+    {
+        $this->note = $note;
 
         return $this;
     }

@@ -5,10 +5,15 @@
         {{ atelier.description }}
         </p>
         <div class="card-footer bg-transparent border-success">
-            <button onclick="location.href='{{ path('app_atelier_edit', {'id': atelier.id}) }}'"
-                    title="Edit" class="btn btn-primary">edit</button>
-            {{ include('bootstrap/_delete_atelier.html.twig') }}
-
+            {% if app.user %}
+                {% if 'ROLE_APPRENTI' not in  app.user.roles() %}
+                    <button onclick="location.href='{{ path('app_atelier_edit', {'id': atelier.id}) }}'"
+                            title="Edit" class="btn btn-primary">edit</button>
+                    {{ include('bootstrap/_delete_atelier.html.twig') }}
+                {% endif %}
+            {% endif %}
+            NOTES: {{ dump(notes) }}
         </div>
+
     </div>
 </div>

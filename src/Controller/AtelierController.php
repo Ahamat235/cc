@@ -47,8 +47,16 @@ final class AtelierController extends AbstractController
     #[Route('/{id}', name: 'app_atelier_show', methods: ['GET'])]
     public function show(Atelier $atelier): Response
     {
+        $notes = [ '0'=>0, '1'=>0, '2'=>0, '3'=>0, '4'=>0, '5'=>0 ];
+        foreach($atelier->getInscriptions() as $inscription){
+            $note=(string)$inscription->getNote();
+            if(isset($notes[$note])){
+                $notes[$note]++;
+            }
+        }
         return $this->render('atelier/show.html.twig', [
             'atelier' => $atelier,
+            'notes' => $notes
         ]);
     }
 

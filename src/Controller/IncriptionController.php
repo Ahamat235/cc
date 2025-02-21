@@ -66,5 +66,27 @@ final class IncriptionController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/note/{id}/{n}', name: 'note', methods: ['GET'], requirements: ['n' => '\d+'])]
+    public function note(Atelier $atelier, EntityManagerInterface $entityManager, $n): Response
+    {
+        $this->denyAccessUnlessGranted("ROLE_APPRENTI");
+
+        if($n >= 0 && $n < 6){
+            $repository = $entityManager->getRepository(Inscription::class);
+
+            $inscription = $repository->findOneBy([
+                'User' => $this->getUser(),
+                'atelier' => $atelier,
+            ]);
+
+            $inscription->setNote($n);
+
+            $entityManager->persist($inscription);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('mesinscriptions', [], Response::HTTP_SEE_OTHER);
+    }
+
+
 
 }

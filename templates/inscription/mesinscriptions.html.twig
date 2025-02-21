@@ -26,8 +26,17 @@
                             <td>{{ inscription.atelier.description }}</td>
                             <td>
                                 <a href="{{ path('app_atelier_show', {'id': inscription.atelier.id}) }}" class="btn btn-info btn-sm">Show</a>
-                                <a href="{{ path('app_atelier_edit', {'id': inscription.atelier.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ path('desinscrire', {'id': inscription.atelier.id}) }}" class="btn btn-warning btn-sm">Desincrire</a>
+
+                                <a href="{{ path('note', {'id': inscription.atelier.id, 'n': 0}) }}"  class="btn btn-info btn-sm">Noter 0</a>
+                                <a href="{{ path('note', {'id': inscription.atelier.id, 'n': 1}) }}"  class="btn btn-info btn-sm">Noter 1</a>
+                                <a href="{{ path('note', {'id': inscription.atelier.id, 'n': 2}) }}"  class="btn btn-info btn-sm">Noter 2</a>
+                                <a href="{{ path('note', {'id': inscription.atelier.id, 'n': 3}) }}"  class="btn btn-info btn-sm">Noter 3</a>
+                                <a href="{{ path('note', {'id': inscription.atelier.id, 'n': 4}) }}"  class="btn btn-info btn-sm">Noter 4</a>
+                                <a href="{{ path('note', {'id': inscription.atelier.id, 'n': 5}) }}"  class="btn btn-info btn-sm">Noter 5</a>
+
                             </td>
+
                         </tr>
                     {% else %}
                         <tr>
