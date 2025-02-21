@@ -37,6 +37,7 @@ class AtelierFixture extends Fixture
             $users[]= $user;
         }
 
+        $user2 =[];
         for($i=1 ; $i<2 ; $i++){
             $user = new User();
             $user->setUsername('instructeur_'.$i)
@@ -46,6 +47,7 @@ class AtelierFixture extends Fixture
                 ->setNom('NomInstructeur'.$i)
                 ->setPrenom("PrenomInstructeur$i");
             $manager->persist($user);
+            $user2[]=$user;
         }
 
 
@@ -55,7 +57,7 @@ class AtelierFixture extends Fixture
             $atelier = new Atelier();
             $atelier->setNom($faker->company())
                 ->setDescription(join("\n\n", $faker->paragraphs))
-                ->setUsername($users[array_rand($users)]);
+                ->setUsername($user2[array_rand($user2)]);
             $manager->persist($atelier);
             $lesAteliers[]=$atelier;
         }

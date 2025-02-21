@@ -16,7 +16,7 @@ final class IncriptionController extends AbstractController
     #[Route(path: '/inscrire/{id}', name: 'inscrire', methods: ['GET'])]
     public function inscrire(Atelier $atelier, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+        $this->denyAccessUnlessGranted("ROLE_APPRENTI");
 
         $inscription = new Inscription();
         $inscription->setUser($this->getUser());
@@ -31,7 +31,7 @@ final class IncriptionController extends AbstractController
     #[Route(path: '/desinscrire/{id}', name: 'desinscrire', methods: ['GET'])]
     public function desinscrire(Atelier $atelier, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+        $this->denyAccessUnlessGranted("ROLE_APPRENTI");
 
         $repository = $entityManager->getRepository(Inscription::class);
 
@@ -49,7 +49,7 @@ final class IncriptionController extends AbstractController
     #[Route(path: '/mesinscriptions', name: 'mesinscriptions', methods: ['GET'])]
     public function mesinscriptions(): Response
     {
-        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+        $this->denyAccessUnlessGranted("ROLE_APPRENTI");
 
         return $this->render('inscription/mesinscriptions.html.twig', [
             'inscriptions' => $this->getUser()->getInscriptions(),
@@ -59,7 +59,7 @@ final class IncriptionController extends AbstractController
     #[Route(path: '/atelier/{id}/inscrits', name: 'inscrits', methods: ['GET'])]
     public function inscrits(Atelier $atelier): Response
     {
-        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+        $this->denyAccessUnlessGranted("ROLE_INSTRUCTEUR");
 
         return $this->render('inscription/inscrits.html.twig', [
             'inscriptions' => $atelier->getInscriptions(),

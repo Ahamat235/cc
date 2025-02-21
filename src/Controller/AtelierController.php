@@ -26,7 +26,7 @@ final class AtelierController extends AbstractController
     #[Route('/new', name: 'app_atelier_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+        $this->denyAccessUnlessGranted("ROLE_INSTRUCTEUR");
         $atelier = new Atelier();
         $form = $this->createForm(AtelierType::class, $atelier);
         $form->handleRequest($request);
@@ -55,7 +55,7 @@ final class AtelierController extends AbstractController
     #[Route('/{id}/edit', name: 'app_atelier_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Atelier $atelier, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+        $this->denyAccessUnlessGranted("ROLE_INSTRUCTEUR");
         $form = $this->createForm(AtelierType::class, $atelier);
         $form->handleRequest($request);
 
@@ -74,7 +74,7 @@ final class AtelierController extends AbstractController
     #[Route('/{id}', name: 'app_atelier_delete', methods: ['POST'])]
     public function delete(Request $request, Atelier $atelier, EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+        $this->denyAccessUnlessGranted("ROLE_INSTRUCTEUR");
         if ($this->isCsrfTokenValid('delete'.$atelier->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($atelier);
             $entityManager->flush();

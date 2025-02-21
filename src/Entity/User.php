@@ -95,9 +95,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
 
-        if(!in_array('ROLE_INSTRUCTEUR', $roles)){
-            $roles[] = 'ROLE_INSTRUCTEUR';
-        }
+        //if(!in_array('ROLE_INSTRUCTEUR', $roles)){
+            //$roles[] = 'ROLE_INSTRUCTEUR';
+        //}
         return array_unique($roles);
     }
 
